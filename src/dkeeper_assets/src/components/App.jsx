@@ -19,18 +19,19 @@ function App(){
     }
 
     function addNote(note){
+        dkeeper.createNote(note.title, note.content);
         setNotes(prevNotes => {
-            dkeeper.createNote(note.title, note.content);
             return [note, ...prevNotes];
         });
     }
 
     function deleteNote(id){
+        dkeeper.deleteNote(id);
         setNotes(prevNotes => {
             return prevNotes.filter((item, index) => {
                 return index !== id;
-            })
-        })
+            });
+        });
     }
 
     return (<div>
